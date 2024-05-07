@@ -1,0 +1,15 @@
+^tic\.R$
+^Meta$
+^doc$
+^docs$
+^pkgdown$
+^codecov\.yml$
+^appveyor\.yml$
+^\.travis\.yml$
+^README\.Rmd$
+^LICENSE\.md$
+^.*\.Rproj$
+^\.Rproj\.user$
+^cran-comments\.md$
+^\.github$
+^CRAN-RELEASE$

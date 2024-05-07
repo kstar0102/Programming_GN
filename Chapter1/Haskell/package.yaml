@@ -1,0 +1,92 @@
+name:                jord
+version:             2.0.0.0
+github:              ofmooseandmen/jord
+license:             BSD3
+author:              Cedric Liegeois
+maintainer:          Cedric Liegeois <ofmooseandmen@yahoo.com>
+copyright:           2020 Cedric Liegeois
+category:            Geography
+stability:           experimental
+homepage:            https://github.com/ofmooseandmen/jord
+synopsis:            Geographical Position Calculations
+description:         Please see the README on GitHub at <https://github.com/ofmooseandmen/jord#readme>
+
+extra-source-files:
+- README.md
+- ChangeLog.md
+
+ghc-options: -Wall
+
+dependencies:
+- base >= 4.9 && < 5
+
+library:
+  source-dirs: src
+  exposed-modules:
+    - Data.Geo.Jord.Angle
+    - Data.Geo.Jord.Duration
+    - Data.Geo.Jord.Ellipsoid
+    - Data.Geo.Jord.Ellipsoids
+    - Data.Geo.Jord.Geocentric
+    - Data.Geo.Jord.Geodetic
+    - Data.Geo.Jord.Geodesic
+    - Data.Geo.Jord.GreatCircle
+    - Data.Geo.Jord.Kinematics
+    - Data.Geo.Jord.LatLong
+    - Data.Geo.Jord.Length
+    - Data.Geo.Jord.Local
+    - Data.Geo.Jord.Math3d
+    - Data.Geo.Jord.Model
+    - Data.Geo.Jord.Models
+    - Data.Geo.Jord.Polygon
+    - Data.Geo.Jord.Positions
+    - Data.Geo.Jord.Rotation
+    - Data.Geo.Jord.Speed
+    - Data.Geo.Jord.Triangle
+    - Data.Geo.Jord.Tx
+    - Data.Geo.Jord.Txs
+  other-modules:
+    - Data.Geo.Jord.Parser
+
+executables:
+  jord-gen:
+    main:                Main.hs
+    other-modules:
+      - Ellipsoids
+      - Generator
+      - Models
+      - Parsers
+      - Transformations
+    source-dirs:         gen
+  jord-benchmarks:
+    main:                Main.hs
+    other-modules:
+      - PositionsBG
+      - GeodesicBG
+      - GeodeticBG
+      - GreatCircleBG
+      - KinematicsBG
+    source-dirs:         benchmarks
+    dependencies:
+      - jord
+      - criterion
+tests:
+  jord-test:
+    main:                Spec.hs
+    verbatim:
+      build-tool-depends:
+        hspec-discover:hspec-discover
+    source-dirs:         test
+    dependencies:
+      - jord
+      - hspec == 2.*
+      - HUnit == 1.6.*
+  jord-readme:
+    main: README.lhs
+    verbatim:
+      build-tool-depends:
+        markdown-unlit:markdown-unlit
+    dependencies:
+      - jord
+      - markdown-unlit
+    ghc-options: -pgmL markdown-unlit
